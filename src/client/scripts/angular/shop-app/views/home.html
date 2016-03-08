@@ -1,0 +1,10 @@
+<div class="page">
+	<h1>Cards</h1>
+	<p>This is the homepage!</p>
+
+	<pre>{{ $ctrl | json }}</pre>
+	
+	<filter fkey="foo" label="This is my label" key="$ctrl.filters"> </filter>
+
+	<card ng-repeat="card in $ctrl.cards track by card.id" model="card"></card>
+</div>

@@ -1,0 +1,236 @@
+{
+	"id": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+	"name": "Cards for Causes (cardsforcauses.giveasyoulive.com)",
+	"description": "",
+	"order": [
+		"3bfb8a19-3d3e-6aa2-2e75-119c45d0e438",
+		"cd5469b4-dbd5-d09a-faa6-50b7fd975716",
+		"21a34754-a759-51dd-c900-7485a672d10a",
+		"7c3d4cb0-35ce-879d-4243-f01912f8389e",
+		"f128a81e-b33c-9a08-90bf-9672f8ce65e7",
+		"7eef0127-4bae-1915-99d8-31b64a87fdaf",
+		"731c29d8-2a7b-ee5d-e5a5-0c79b12c2c56",
+		"b65afb16-199e-7af8-ad9c-62dcd24bf96c"
+	],
+	"folders": [],
+	"timestamp": 1457460625139,
+	"owner": "339094",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "21a34754-a759-51dd-c900-7485a672d10a",
+			"headers": "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nReferer: https://cardsforcauses.giveasyoulive.com/addOrderLine\nOrigin: https://cardsforcauses.giveasyoulive.com\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "https://cardsforcauses.giveasyoulive.com/addOrderLine",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457466964794,
+			"name": "Add Cineworld card",
+			"description": "",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"responses": [],
+			"rawModeData": "type=CARD&value=5&quantity=1&minValue=5&maxValue=250&productCode=CINE00&donation=6.0"
+		},
+		{
+			"id": "3bfb8a19-3d3e-6aa2-2e75-119c45d0e438",
+			"headers": "",
+			"url": "https://cardsforcauses.giveasyoulive.com/charity/starlight",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Charity homepage",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1457462554773,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "market=instore&sort=name&card=&digital=&reloadable="
+		},
+		{
+			"id": "731c29d8-2a7b-ee5d-e5a5-0c79b12c2c56",
+			"headers": "",
+			"url": "http://localhost:3333/api/remove",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "orderLineId",
+					"value": "127",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457475537770,
+			"name": "http://localhost:3333/api/remove",
+			"description": "",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"responses": []
+		},
+		{
+			"id": "7c3d4cb0-35ce-879d-4243-f01912f8389e",
+			"headers": "",
+			"url": "https://cardsforcauses.giveasyoulive.com/list",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457473465495,
+			"name": "Get basket",
+			"description": "Get basket",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"responses": []
+		},
+		{
+			"id": "7eef0127-4bae-1915-99d8-31b64a87fdaf",
+			"headers": "Cookie: prospect=0||1517|||||\n",
+			"url": "https://cardsforcauses.giveasyoulive.com/query",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "market",
+					"value": "online",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sort",
+					"value": "name",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "digital",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "reloadable",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457467757345,
+			"name": "List all available cards",
+			"description": "",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"responses": []
+		},
+		{
+			"id": "b65afb16-199e-7af8-ad9c-62dcd24bf96c",
+			"headers": "",
+			"url": "http://localhost:3333/api/add",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457475523516,
+			"name": "http://localhost:3333/api/add",
+			"description": "",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"responses": []
+		},
+		{
+			"id": "cd5469b4-dbd5-d09a-faa6-50b7fd975716",
+			"headers": "",
+			"url": "https://cardsforcauses.giveasyoulive.com/shop",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457463885221,
+			"name": "Visit browse page",
+			"description": "",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"responses": [],
+			"rawModeData": "market=instore&sort=name&card=&digital=&reloadable="
+		},
+		{
+			"id": "f128a81e-b33c-9a08-90bf-9672f8ce65e7",
+			"headers": "",
+			"url": "https://cardsforcauses.giveasyoulive.com/deleteOrderLine",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "line",
+					"value": "123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457468490091,
+			"name": "Delete item from basket",
+			"description": "",
+			"collectionId": "22a0cdc4-0bbe-3840-aebb-45d3e2bce7fd",
+			"responses": []
+		}
+	]
+}
