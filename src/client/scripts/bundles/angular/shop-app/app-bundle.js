@@ -30465,7 +30465,6 @@ angular
     };
   })
   .service('CardService', ['$http', 'ApiQueryBuilder', function($http, ApiQueryBuilder) {
-
     var getAllQuery = ApiQueryBuilder.newQuery().path('/api/list').get();
 
     return {
@@ -30475,7 +30474,6 @@ angular
         });
       }
     };
-
   }])
   .component('card', {
     bindings: {
@@ -30502,9 +30500,8 @@ angular
       key: '<',
       label: '@'
     },
-    controller: function() {
-      
-    },
+    controller: function() {},
     template: '<div class="filter"><pre>{{ $ctrl | json }}</pre><input type="text" ng-model="$ctrl.key[$ctrl.fkey]" /> {{ $ctrl.label }}</div>'
   });
+
 },{"./_constants":3,"angular":2}]},{},[4]);

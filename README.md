@@ -10,7 +10,7 @@ Running
 
 - Make sure you have `base-project` checked out from [here](https://github.com/danmofo/base-project)
 - Checkout this project to `/your/directory` and `npm install` for dependencies.
-- Add your user cookies (`everyclick` and `gc`) to a file named `.cookie.json` in the following format: `{'cookies': 'myCookie="MyValue";'}, if you don't know how download Postman and import `server/postman.json` and visit the following items in the collection: `Charity homepage`, `Add Cineworld Card` (note the ID), `Delete item from basket` (using previous id). You should now have a `gc` cookie. Log in to get an `everyclick` cookie!
+- Add your user cookies (`everyclick` and `gc`) to a file named `.cookie.json` in the following format: `{'cookies': 'myCookie="MyValue";'}` If you don't know how, download Postman and import `server/postman.json`, then visit the following items in the collection: `Charity homepage`, `Add Cineworld Card` (note the ID), `Delete item from basket` (using previous id). You should now have a `gc` cookie. Log in to get an `everyclick` cookie!
 - Grunt commands
 	- Development: Start Grunt (`grunt dev --no-tests --src=/your/directory`) and start a local http server (`http-server -p 3333`), visit `localhost:3333` in your browser.
 
