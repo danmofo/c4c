@@ -30,5 +30,6 @@ module.exports = {
 		"minValue": 5,
 		"maxValue": 250,
 		"type": "CARD",
-		"donation": 6,
+		"donation": 6
+  }
 };
