@@ -1,10 +1,29 @@
-<div class="page">
-	<h1>Cards</h1>
-	<p>This is the homepage!</p>
+<div class="container">
 
-	<pre>{{ $ctrl | json }}</pre>
-	
-	<filter fkey="foo" label="This is my label" key="$ctrl.filters"> </filter>
+  <div class="page">
+    <h1 class="page__title">Browse cards</h1>
+    <p class="page__intro">Check out all the latest cards..</p>
 
-	<card ng-repeat="card in $ctrl.cards track by card.id" model="card"></card>
+    <div class="filters">
+
+      <h2>Filter by...</h2>
+      <ul>
+        <li>Card type</li>
+      </ul>
+
+      <h2>Sort by..</h2>
+      <ul>
+        <li>Name</li>
+        <li>Donation</li>
+        <li>Card type</li>
+      </ul>
+    </div>
+
+
+    <div class="grid">
+      <card ng-repeat="card in $ctrl.cards track by card.id" model="card" class="grid__col grid__col--1-of-4"></card>
+    </div>
+
+  </div>
+
 </div>

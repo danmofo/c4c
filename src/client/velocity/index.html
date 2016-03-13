@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Hello world!</title>
-
+	<title>Cards for Causes clone</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/styles/css/main.css"></link>
 </head>
 <body ng-app="myApp">
+  <header class="header">
+    <div class="container">
+      <div class="grid">
+        <div class="grid__col grid__col--4-of-12">
+            <a href="/" class="brand">Cards for Causes</a>
+        </div>
+        <div class="grid__col grid__col--push-5-of-12 grid__col--3-of-12">
+            <basket items="[1, 2, 3, 4, 5]"></basket>
+        </div>
+      </div>
+    </div>
+  </header>
 	<cards></cards>
 	<script src="/scripts/bundles/angular/shop-app/app-bundle.js"></script>
 </body>

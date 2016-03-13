@@ -1,0 +1,26 @@
+/**
+ *  Button component.
+ *
+ *  @author: danielmoffat
+ */
+
+.button {
+  padding: 10px 20px;
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button--primary {
+  background-color: @brand;
+  border-bottom: 2px solid darken(@brand, 5%);
+}
+
+.button--default {
+  background-color: #AAAAAA;
+  border-bottom: 2px solid darken(#AAAAAA, 5%);
+}

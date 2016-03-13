@@ -30444,64 +30444,121 @@ module.exports = {
 var angular = require('angular');
 var CONSTANTS = require('./_constants');
 
-angular
-  .module(CONSTANTS.APP_NAMESPACE, [])
-  .service('ApiQueryBuilder', function() {
-    return {
-      _query: '',
-      newQuery: function() {
-        this._query = CONSTANTS.API_URL;
-        return this;
-      },
-      path: function(path) {
-        if(path) {
-          this._query += path;
-        }
-        return this;
-      },
-      get: function() {
-        return this._query;
-      }
-    };
-  })
-  .service('CardService', ['$http', 'ApiQueryBuilder', function($http, ApiQueryBuilder) {
-    var getAllQuery = ApiQueryBuilder.newQuery().path('/api/list').get();
+angular.module(CONSTANTS.APP_NAMESPACE, []);
 
-    return {
-      getAll: function() {
-        return $http.get(getAllQuery).then(function(response) {
-          return response.data;
-        });
-      }
-    };
-  }])
+// todo: look at a better way of including things
+require('./cards/cardService');
+require('./cards/cards');
+require('./cards/card');
+require('./basket/basket');
+
+},{"./_constants":3,"./basket/basket":5,"./cards/card":6,"./cards/cardService":7,"./cards/cards":8,"angular":2}],5:[function(require,module,exports){
+/**
+ *  Card Service that is responsible for making requests to the cards API.
+ *
+ *  @author danielmoffat
+ */
+
+var CONSTANTS = require('../_constants');
+
+angular.module(CONSTANTS.APP_NAMESPACE)
+  .component('basket', {
+    bindings: {
+      items: '<'
+    },
+    controller: [function() {
+      var ctrl = this;
+
+      return ctrl;
+    }],
+    templateUrl: '/scripts/angular/shop-app/views/basket.html'
+  });
+
+
+
+},{"../_constants":3}],6:[function(require,module,exports){
+/**
+ *  Card Service that is responsible for making requests to the cards API.
+ *
+ *  @author danielmoffat
+ */
+
+var CONSTANTS = require('../_constants');
+
+angular.module(CONSTANTS.APP_NAMESPACE)
   .component('card', {
     bindings: {
       model: '<'
     },
     controller: function() {},
-    template: '<div class="card"><img ng-src="{{ $ctrl.model.imageUrl }}" width="100" /><p>{{ $ctrl.model.name }}</p></div>'
-  })
-  .component('cards', {
-	  controller: ['CardService', function(CardService) {
-      var ctrl = this;
-      ctrl.filters =  {};
-
-      CardService.getAll().then(function(response) {
-        ctrl.cards = response;
-      });
-
-	  }],
-	  templateUrl: '/scripts/angular/shop-app/views/home.html'
-	})
-  .component('filter', {
-    bindings: {
-      fkey: '@',
-      key: '<',
-      label: '@'
-    },
-    controller: function() {},
-    template: '<div class="filter"><pre>{{ $ctrl | json }}</pre><input type="text" ng-model="$ctrl.key[$ctrl.fkey]" /> {{ $ctrl.label }}</div>'
+    templateUrl: '/scripts/angular/shop-app/views/card.html'
   });
 
-},{"./_constants":3,"angular":2}]},{},[4]);
+
+
+},{"../_constants":3}],7:[function(require,module,exports){
+/**
+ *  Card Service that is responsible for making requests to the cards API.
+ *
+ *  @author danielmoffat
+ */
+
+var CONSTANTS = require('../_constants');
+
+angular.module(CONSTANTS.APP_NAMESPACE)
+  .service('CardService', ['$log', '$http', function($log, $http) {
+
+    var endpoint = 'http://localhost:3333';
+
+    var queries = {
+        query: '/api/query',
+        add: '/api/add',
+        remove: '/api/remove',
+        basket: '/api/basket'
+    };
+
+    var service = {
+      getAll: getAll,
+    };
+
+    return service;
+
+    function getAll() {
+      return $http.get(getQueryFor('query')).then(function(response) {
+        return response.data;
+      });
+    }
+
+    function getQueryFor(name) {
+      return endpoint + queries[name];
+    }
+
+  }]);
+
+},{"../_constants":3}],8:[function(require,module,exports){
+/**
+ *  Card Service that is responsible for making requests to the cards API.
+ *
+ *  @author danielmoffat
+ */
+
+var CONSTANTS = require('../_constants');
+
+angular.module(CONSTANTS.APP_NAMESPACE)
+  .component('cards', {
+    controller: ['CardService', CardsComponentController],
+    templateUrl: '/scripts/angular/shop-app/views/home.html'
+  });
+
+
+function CardsComponentController(CardService) {
+    var ctrl = this;
+
+    ctrl.cards = [];
+
+    CardService.getAll().then(function(cards) {
+      ctrl.cards = cards;
+    });
+}
+
+},{"../_constants":3}]},{},[4]);

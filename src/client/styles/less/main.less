@@ -1,65 +1,48 @@
-html {
-  font-family: 'Arial';
+/**
+ *  Main CSS file for this website.
+ *
+ *  @author: danielmoffat
+ */
+@import 'vendor/normalize';
+
+@import 'common/variables';
+@import 'common/base';
+@import 'common/helpers';
+
+@import 'vendor/toast';
+
+@import 'components/button';
+@import 'components/card';
+@import 'components/basket';
+
+body {
+
 }
 
-a {
-  color: blue;
-  text-decoration: underline;
+.header {
+  background-color: @brand;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.subtle {
-  font-size: 14px;
-  color: #aaa;
-}
-
-.store-front__title {
-  font-size: 22px;
-}
-
-.store-front__intro {
-  font-size: 12px;
-}
-
-.store-item {
+.brand {
+  font-size: 18px;
+  color: #FFF;
+  text-decoration: none;
+  margin-top: 9px;
   display: block;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed #ccc;
-  overflow: hidden;
-
-  &__info {
-    width: 100px;
-    float: left;
-  }
-
-  &__action {
-    float: left;
-    margin-left: 20px;
-  }
 }
 
-.shopping-basket {
+.page {
+
+}
+
+.page__title {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.page__intro {
   font-size: 14px;
-}
-
-.button {
-  padding: 10px 20px;
-  border: 0;
-  color: #fff;
-  font-size: 14px;
-  font-family: 'Arial';
-
-  &:hover {
-    cursor: opinter;
-  }
-}
-
-.button--add {
-  background-color: #1C8976;
-  border-bottom: 2px solid darken(#1C8976, 5%);
-}
-
-.button--remove {
-  background-color: #CB2D26;
-  border-bottom: 2px solid darken(#CB2D26, 5%);
+  margin-bottom: 20px;
 }
