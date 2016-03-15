@@ -1,0 +1,23 @@
+<div class="basket-item">
+  <div class="basket-item__content">
+    <div class="basket-item__name">
+      {{ $ctrl.model.product.name }}
+    </div>
+    <div class="basket-item__quantity">
+      {{ $ctrl.model.quantity }} <strong>x</strong>
+    </div>
+    <div class="basket-item__value">
+      {{ $ctrl.model.value }}
+    </div>
+    <div class="basket-item__total">
+      {{ $ctrl.model.quantity * $ctrl.model.value | currency:'£' }}
+    </div>
+    <div class="basket-item__action">
+      <button class="button button--default button--small">Remove</button>
+    </div>
+    {{ $ctrl.model.product.name }}
+    {{ $ctrl.model.quantity }}
+    {{ $ctrl.model.value }}
+    {{ $ctrl.model.quantity * $ctrl.model.value | currency:'£' }}
+  </div>
+</div>

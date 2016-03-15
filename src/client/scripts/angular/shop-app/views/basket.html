@@ -2,4 +2,12 @@
   <div class="basket__summary">
     <p class="basket__summary__title">Your basket <span class="basket__summary__count">{{ $ctrl.items.length }}</span></p>
   </div>
+  <div class="basket__full" ng-if="$ctrl.items.length">
+    <p>Basket summary</p>
+
+    <div ng-repeat="item in $ctrl.items track by item.id">
+      <basket-item model="item"></basket-item>
+    </div>
+
+  </div>
 </div>

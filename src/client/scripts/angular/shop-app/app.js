@@ -10,4 +10,6 @@ angular.module(CONSTANTS.APP_NAMESPACE, []);
 require('./cards/cardService');
 require('./cards/cards');
 require('./cards/card');
+require('./basket/basketService');
 require('./basket/basket');
+require('./basket/basketItem');

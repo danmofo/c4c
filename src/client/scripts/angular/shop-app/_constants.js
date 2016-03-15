@@ -1,4 +1,4 @@
 module.exports = {
   APP_NAMESPACE: 'myApp',
-  API_URL: 'http://localhost:3333'
+  API_BASE_URL: 'http://localhost:3333'
 };

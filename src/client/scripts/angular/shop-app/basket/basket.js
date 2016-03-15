@@ -8,11 +8,14 @@ var CONSTANTS = require('../_constants');
 
 angular.module(CONSTANTS.APP_NAMESPACE)
   .component('basket', {
-    bindings: {
-      items: '<'
-    },
-    controller: [function() {
+    controller: ['BasketService', function(BasketService) {
       var ctrl = this;
+
+      ctrl.items = [];
+
+      BasketService.get().then(function(resp) {
+        ctrl.items = resp;
+      });
 
       return ctrl;
     }],

@@ -30434,7 +30434,7 @@ module.exports = angular;
 },{"./angular":1}],3:[function(require,module,exports){
 module.exports = {
   APP_NAMESPACE: 'myApp',
-  API_URL: 'http://localhost:3333'
+  API_BASE_URL: 'http://localhost:3333'
 };
 
 },{}],4:[function(require,module,exports){
@@ -30450,9 +30450,11 @@ angular.module(CONSTANTS.APP_NAMESPACE, []);
 require('./cards/cardService');
 require('./cards/cards');
 require('./cards/card');
+require('./basket/basketService');
 require('./basket/basket');
+require('./basket/basketItem');
 
-},{"./_constants":3,"./basket/basket":5,"./cards/card":6,"./cards/cardService":7,"./cards/cards":8,"angular":2}],5:[function(require,module,exports){
+},{"./_constants":3,"./basket/basket":5,"./basket/basketItem":6,"./basket/basketService":7,"./cards/card":8,"./cards/cardService":9,"./cards/cards":10,"angular":2}],5:[function(require,module,exports){
 /**
  *  Card Service that is responsible for making requests to the cards API.
  *
@@ -30463,11 +30465,14 @@ var CONSTANTS = require('../_constants');
 
 angular.module(CONSTANTS.APP_NAMESPACE)
   .component('basket', {
-    bindings: {
-      items: '<'
-    },
-    controller: [function() {
+    controller: ['BasketService', function(BasketService) {
       var ctrl = this;
+
+      ctrl.items = [];
+
+      BasketService.get().then(function(resp) {
+        ctrl.items = resp;
+      });
 
       return ctrl;
     }],
@@ -30477,6 +30482,63 @@ angular.module(CONSTANTS.APP_NAMESPACE)
 
 
 },{"../_constants":3}],6:[function(require,module,exports){
+/**
+ *  Card Service that is responsible for making requests to the cards API.
+ *
+ *  @author danielmoffat
+ */
+
+var CONSTANTS = require('../_constants');
+
+angular.module(CONSTANTS.APP_NAMESPACE)
+  .component('basketItem', {
+    bindings: {
+      model: '<'
+    },
+    controller: ['$log', function($log) {
+      var ctrl = this;
+
+
+      return ctrl;
+    }],
+    templateUrl: '/scripts/angular/shop-app/views/basket-item.html'
+  });
+
+},{"../_constants":3}],7:[function(require,module,exports){
+/**
+ *  Card Service that is responsible for making requests to the cards API.
+ *
+ *  @author danielmoffat
+ */
+
+var CONSTANTS = require('../_constants');
+
+angular.module(CONSTANTS.APP_NAMESPACE)
+  .service('BasketService', ['$log', '$http', function($log, $http) {
+
+    var queries = {
+        basket: '/api/basket'
+    };
+
+    var service = {
+      get: get
+    };
+
+    return service;
+
+    function get() {
+      return $http.get(getQueryFor('basket')).then(function(response) {
+        return response.data.orderLines;
+      });
+    }
+
+    function getQueryFor(name) {
+      return CONSTANTS.API_BASE_URL + queries[name];
+    }
+
+  }]);
+
+},{"../_constants":3}],8:[function(require,module,exports){
 /**
  *  Card Service that is responsible for making requests to the cards API.
  *
@@ -30496,7 +30558,7 @@ angular.module(CONSTANTS.APP_NAMESPACE)
 
 
 
-},{"../_constants":3}],7:[function(require,module,exports){
+},{"../_constants":3}],9:[function(require,module,exports){
 /**
  *  Card Service that is responsible for making requests to the cards API.
  *
@@ -30513,15 +30575,25 @@ angular.module(CONSTANTS.APP_NAMESPACE)
     var queries = {
         query: '/api/query',
         add: '/api/add',
-        remove: '/api/remove',
-        basket: '/api/basket'
+        remove: '/api/remove'
     };
 
     var service = {
       getAll: getAll,
+      addCard: addCard
     };
 
     return service;
+
+    function addCard(card) {
+      return $http.post(getQueryFor('add')).then(function(response) {
+        return response.data;
+      });
+    }
+
+    function removeCard(card) {
+
+    }
 
     function getAll() {
       return $http.get(getQueryFor('query')).then(function(response) {
@@ -30529,13 +30601,14 @@ angular.module(CONSTANTS.APP_NAMESPACE)
       });
     }
 
+
     function getQueryFor(name) {
       return endpoint + queries[name];
     }
 
   }]);
 
-},{"../_constants":3}],8:[function(require,module,exports){
+},{"../_constants":3}],10:[function(require,module,exports){
 /**
  *  Card Service that is responsible for making requests to the cards API.
  *

@@ -14,21 +14,32 @@ angular.module(CONSTANTS.APP_NAMESPACE)
     var queries = {
         query: '/api/query',
         add: '/api/add',
-        remove: '/api/remove',
-        basket: '/api/basket'
+        remove: '/api/remove'
     };
 
     var service = {
       getAll: getAll,
+      addCard: addCard
     };
 
     return service;
+
+    function addCard(card) {
+      return $http.post(getQueryFor('add')).then(function(response) {
+        return response.data;
+      });
+    }
+
+    function removeCard(card) {
+
+    }
 
     function getAll() {
       return $http.get(getQueryFor('query')).then(function(response) {
         return response.data;
       });
     }
+
 
     function getQueryFor(name) {
       return endpoint + queries[name];
